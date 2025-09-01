@@ -81,7 +81,7 @@ function App() {
     })
   }
 
-  const [state, handleSubmit] = useForm("FORM_KEY");
+  const [state, handleSubmit] = useForm(import.meta.env.VITE_FORMSPREE_KEY);
 
   const handleFormSubmit = async (e) => {
     e.preventDefault();

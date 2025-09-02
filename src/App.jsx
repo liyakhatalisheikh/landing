@@ -80,16 +80,18 @@ function App() {
       [e.target.name]: e.target.value
     })
   }
-
   const [state, handleSubmit] = useForm(import.meta.env.VITE_FORMSPREE_KEY);
 
-  const handleFormSubmit = async (e) => {
-    e.preventDefault();
-    await handleSubmit(e);
+  useEffect(() => {
     if (state.succeeded) {
       alert("Thanks for your submission!");
       closeModal();
     }
+  }, [state.succeeded]);
+
+  const handleFormSubmit = async (e) => {
+    e.preventDefault();
+    await handleSubmit(e); // This will trigger state change
   };
 
   return (
